@@ -1,0 +1,54 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32602.215
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TechBaraholka", "TechBaraholka\TechBaraholka.csproj", "{15A3B135-2C4F-4C34-8A76-06B54358E246}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{B28F1BA4-F5AD-4755-855D-C0298D423CBA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DAL", "DAL", "{CDDD5C4F-4207-4D26-A5FC-6FE3FFCE8E58}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Service", "Service", "{0544D078-AE58-45AE-9074-4958D59233D4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TechBaraholka.Domain", "TechBaraholka.Domain\TechBaraholka.Domain.csproj", "{D5E51A54-87E9-4B45-A7E6-CFC170A1BECB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TechBaraholka.DAL", "TechBaraholka.DAL\TechBaraholka.DAL.csproj", "{AEF623CD-DB7B-4EED-A4B1-7381C35647DB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TechBaraholka.Service", "TechBaraholka.Service\TechBaraholka.Service.csproj", "{19F139F8-7827-456E-900A-D452C4B7C6CA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{15A3B135-2C4F-4C34-8A76-06B54358E246}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{15A3B135-2C4F-4C34-8A76-06B54358E246}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{15A3B135-2C4F-4C34-8A76-06B54358E246}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{15A3B135-2C4F-4C34-8A76-06B54358E246}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D5E51A54-87E9-4B45-A7E6-CFC170A1BECB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D5E51A54-87E9-4B45-A7E6-CFC170A1BECB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D5E51A54-87E9-4B45-A7E6-CFC170A1BECB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D5E51A54-87E9-4B45-A7E6-CFC170A1BECB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AEF623CD-DB7B-4EED-A4B1-7381C35647DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AEF623CD-DB7B-4EED-A4B1-7381C35647DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AEF623CD-DB7B-4EED-A4B1-7381C35647DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AEF623CD-DB7B-4EED-A4B1-7381C35647DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{19F139F8-7827-456E-900A-D452C4B7C6CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{19F139F8-7827-456E-900A-D452C4B7C6CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{19F139F8-7827-456E-900A-D452C4B7C6CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{19F139F8-7827-456E-900A-D452C4B7C6CA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{D5E51A54-87E9-4B45-A7E6-CFC170A1BECB} = {B28F1BA4-F5AD-4755-855D-C0298D423CBA}
+		{AEF623CD-DB7B-4EED-A4B1-7381C35647DB} = {CDDD5C4F-4207-4D26-A5FC-6FE3FFCE8E58}
+		{19F139F8-7827-456E-900A-D452C4B7C6CA} = {0544D078-AE58-45AE-9074-4958D59233D4}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {34B54119-8BF7-4F5D-B19F-EA7DAD277064}
+	EndGlobalSection
+EndGlobal
