@@ -15,4 +15,9 @@
     <ProjectReference Include="..\TechBaraholka.Service\TechBaraholka.Service.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\AvatarPics\" />
+    <Folder Include="wwwroot\ProductPics\" />
+  </ItemGroup>
+
 </Project>

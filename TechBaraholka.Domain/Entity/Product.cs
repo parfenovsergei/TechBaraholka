@@ -13,5 +13,6 @@ namespace TechBaraholka.Domain.Entity
         public User Salesman { get; set; }
         public DateTime DateAdded { get; set; }
         public TypeProduct TypeProduct { get; set; }
+        public string PictureName { get; set; }
     }
 }
