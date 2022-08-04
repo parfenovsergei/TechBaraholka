@@ -57,5 +57,28 @@ namespace TechBaraholka.Service.Implementations
                 };
             }
         }
+
+        public async Task<BaseResponse<List<Product>>> GetAll()
+        {
+            try
+            {
+                var users = await _productRepository.GetAll().OrderByDescending(u => u.DateAdded).ToListAsync();
+
+                return new BaseResponse<List<Product>>()
+                {
+                    Data = users,
+                    Description = "Получены все продукты из БД.",
+                    StatusCode = StatusCode.OK
+                };
+            }
+            catch (Exception ex)
+            {
+                return new BaseResponse<List<Product>>()
+                {
+                    Description = ex.Message,
+                    StatusCode = StatusCode.InternalServerError
+                };
+            }
+        }
     }
 }

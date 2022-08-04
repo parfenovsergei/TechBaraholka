@@ -15,16 +15,17 @@ namespace TechBaraholka.Controllers
 {
     public class HomeController : Controller
     {
-        public HomeController()
+        IProductService _productService;
+        public HomeController(IProductService productService)
         {
-
+            _productService = productService;
         }
 
         [HttpGet]
-        [Authorize]
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            var response = await _productService.GetAll();
+            return View(response.Data);
         }
     }
 }

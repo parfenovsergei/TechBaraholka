@@ -12,5 +12,6 @@ namespace TechBaraholka.Service.Interfaces
     public interface IProductService
     {
         Task<BaseResponse<Product>> AddProduct(ProductViewModel model, string path, string userName);
+        Task<BaseResponse<List<Product>>> GetAll();
     }
 }

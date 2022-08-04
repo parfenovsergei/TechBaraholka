@@ -12,11 +12,11 @@ namespace TechBaraholka.Domain.ViewModels.Product
     {
         [Required(ErrorMessage = "Укажите название товара")]
         [MinLength(3, ErrorMessage = "Минимальная длина названия товара 3 символа")]
-        [MaxLength(25, ErrorMessage = "Максимальная длина названия товара 40 символов")]
+        [MaxLength(50, ErrorMessage = "Максимальная длина названия товара 50 символов")]
         public string Name { get; set; }
 
         [Required(ErrorMessage = "Укажите описание товара")]
-        [MaxLength(500, ErrorMessage = "Максимальная длина названия товара 500 символов")]
+        [MaxLength(300, ErrorMessage = "Максимальная длина названия товара 300 символов")]
         public string Description { get; set; }
 
         [Required(ErrorMessage = "Укажите цену товара")]
