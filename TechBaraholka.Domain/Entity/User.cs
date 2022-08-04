@@ -1,4 +1,5 @@
-﻿using TechBaraholka.Domain.Enum;
+﻿using System.Collections.Generic;
+using TechBaraholka.Domain.Enum;
 
 namespace TechBaraholka.Domain.Entity
 
@@ -13,5 +14,6 @@ namespace TechBaraholka.Domain.Entity
         public string Address { get; set; }
         public string Role { get; set; }
         public string AvatarPath { get; set; }
+        public virtual List<Product> Products { get; set; } = new List<Product>();
     }
 }

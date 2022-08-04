@@ -1,8 +1,31 @@
-﻿@{
+﻿@model TechBaraholka.Domain.Entity.User
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+
+<div class="container ">
+    <div class="row mb-4 h2 d-flex justify-content-center">Личный кабинет</div>
+        <div class="row mb-3">
+            <div class="col-3">
+                <p><img src="@Url.Content(Model.AvatarPath)" width="250" class="img-fluid" alt="Фото отсутствует"></p>
+            </div>
+            <div class="col-9">
+                <div class="row mb-1">Имя: @Model.Name @Model.Surname</div>
+                <div class="row mb-1">Email:  @Model.Email</div>
+                <div class="row mb-1">Адрес:  @Model.Address</div>
+                <div class="row mb-1">Роль:  @Model.Role</div>
+            </div>
+        </div>
+        @*<div class="row mb-3">
+            @foreach(var product in Model.Products)
+            {
+                <div class="col-3">
+                    <p class="row mb-2">@product.Name</p>
+                    <p class="row mb-2">@product.Price</p>
+                    <p class="row mb-2">@product.DateAdded</p>
+                </div>
+            }
+        </div>*@
 </div>

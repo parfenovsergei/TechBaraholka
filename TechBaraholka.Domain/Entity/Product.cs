@@ -9,10 +9,11 @@ namespace TechBaraholka.Domain.Entity
         public int Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        public decimal Price { get; set; }
-        public User Salesman { get; set; }
+        public int Price { get; set; }
+        public int UserId { get; set; }
+        public virtual User User { get; set; }
         public DateTime DateAdded { get; set; }
         public TypeProduct TypeProduct { get; set; }
-        public string PictureName { get; set; }
+        public string PicturePath { get; set; }
     }
 }

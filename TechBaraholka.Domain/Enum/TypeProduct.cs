@@ -9,7 +9,7 @@ namespace TechBaraholka.Domain.Enum
         [Display(Name = "Смартфон")]
         SmartPhone = 1,
         [Display(Name = "Ноутбук")]
-        Lapton = 2,
+        Laptop = 2,
         [Display(Name = "Товар для дома")]
         HomeAppliances = 3,
         [Display(Name = "Аксессуар для компьютера")]

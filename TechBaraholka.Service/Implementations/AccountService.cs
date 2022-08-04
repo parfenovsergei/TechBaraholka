@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using TechBaraholka.DAL.Interfaces;
@@ -96,14 +97,6 @@ namespace TechBaraholka.Service.Implementations
             };
             return new ClaimsIdentity(claims, "ApplicationCookie",
                 ClaimsIdentity.DefaultNameClaimType, ClaimsIdentity.DefaultRoleClaimType);
-        }
-
-        public async Task<bool> CheckEmail(string email)
-        {
-            var user = await _userRepository.GetAll().FirstOrDefaultAsync(x => x.Email == email);
-            if (user != null)
-                return false;
-            return true;
         }
     }
 }

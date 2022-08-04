@@ -84,11 +84,5 @@ namespace TechBaraholka.Controllers
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             return RedirectToAction("Index", "Home");
         }
-
-        public async Task<IActionResult> CheckEmail(string email)
-        {
-            bool flag = await _accountService.CheckEmail(email);
-            return Json(flag);
-        }
     }
 }
