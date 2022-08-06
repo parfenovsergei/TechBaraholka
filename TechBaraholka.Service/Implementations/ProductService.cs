@@ -81,7 +81,30 @@ namespace TechBaraholka.Service.Implementations
             }
         }
 
-        public async Task<BaseResponse<List<Product>>> GetSpecificProduct(TypeProduct productType)
+        public async Task<BaseResponse<Product>> GetSpecificProduct(int productId)
+        {
+            try
+            {
+                var specificProduct = await _productRepository.GetAll().FirstOrDefaultAsync(p => p.Id == productId);
+
+                return new BaseResponse<Product>()
+                {
+                    Data = specificProduct,
+                    Description = $"Получен товар из БД c id - {productId}.",
+                    StatusCode = StatusCode.OK
+                };
+            }
+            catch (Exception ex)
+            {
+                return new BaseResponse<Product>()
+                {
+                    Description = ex.Message,
+                    StatusCode = StatusCode.InternalServerError
+                };
+            }
+        }
+
+        public async Task<BaseResponse<List<Product>>> GetSpecificTypeProduct(TypeProduct productType)
         {
             try
             {

@@ -17,7 +17,9 @@
                         <img src="@Url.Content(product.PicturePath)" style="height: 18rem; width=100%; object-fit: contain;" class="card-img-top img-thumbnail img-fluid" alt="card-img-top">
                         <div class="card-body pb-0">
                             <div class="d-flex justify-content-between align-items-center">
-                                <a href="#"><h5 class="card-title">@product.Name</h5></a>
+                                <a asp-action="SpecificProduct" asp-controller="Product" asp-route-id="@product.Id">
+                                    <h5 class="card-title">@product.Name</h5>
+                                </a>
                                 <small class="card-text fs-5">$@product.Price</small>
                             </div>
                             <p class="card-text">@product.Description</p>
@@ -25,7 +27,7 @@
                         <div class="d-flex justify-content-between align-items-center p-3">
                                 @if (User.Identity.IsAuthenticated)
                                 {
-                                    <button type="button" class="btn btn-sm btn-primary btn-outline-dark" href="#">Добавить в корзину</button>
+                                    <button type="button" class="btn btn-sm btn-warning btn-outline-dark" href="#">Добавить в корзину</button>
                                 }
                                 <p class="mt-2"><small class="text-muted">Последнее обновление @product.DateAdded.Date.ToString("dd:MM:yyyy")</small></p>
                         </div>

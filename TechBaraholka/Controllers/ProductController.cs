@@ -3,7 +3,9 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
+using TechBaraholka.Domain.Entity;
 using TechBaraholka.Domain.Enum;
 using TechBaraholka.Domain.ViewModels.Product;
 using TechBaraholka.Service.Interfaces;
@@ -81,7 +83,14 @@ namespace TechBaraholka.Controllers
                     return RedirectToAction("Index", "Home");
             }
 
-            var response = await _productService.GetSpecificProduct(typeProduct);
+            var response = await _productService.GetSpecificTypeProduct(typeProduct);
+            return View(response.Data);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> SpecificProduct(int id)
+        {
+            var response = await _productService.GetSpecificProduct(id);
             return View(response.Data);
         }
     }
