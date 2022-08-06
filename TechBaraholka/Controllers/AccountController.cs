@@ -46,7 +46,7 @@ namespace TechBaraholka.Controllers
                 }
                 else
                 {
-                    string path = "/AvatarPics/DefaultAvatar.png";
+                    string path = "/AvatarPics/DefaultAvatar.jpg";
                     var response = await _accountService.Register(model, path);
                 }
 

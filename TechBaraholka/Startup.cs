@@ -41,6 +41,7 @@ namespace TechBaraholka
             services.AddScoped<IBaseRepository<Product>, ProductRepository>();
             services.AddScoped<IAccountService, AccountService>();
             services.AddScoped<IProductService, ProductService>();
+            services.AddScoped<IProfileService, ProfileService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
