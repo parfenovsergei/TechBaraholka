@@ -50,5 +50,39 @@ namespace TechBaraholka.Controllers
             }
             return View(model);
         }
+
+        [HttpGet]
+        public async Task<IActionResult> Menu(int id)
+        {
+            TypeProduct typeProduct;
+            switch (id)
+            {
+                case 0:
+                    ViewBag.TypeProduct = "Телевизоры";
+                    typeProduct = TypeProduct.TV;
+                    break;
+                case 1:
+                    ViewBag.TypeProduct = "Смартфоны";
+                    typeProduct = TypeProduct.SmartPhone;
+                    break;
+                case 2:
+                    ViewBag.TypeProduct = "Ноутбуки";
+                    typeProduct = TypeProduct.Laptop;
+                    break;
+                case 3:
+                    ViewBag.TypeProduct = "Товары для дома";
+                    typeProduct = TypeProduct.HomeAppliances;
+                    break;
+                case 4:
+                    ViewBag.TypeProduct = "Акссесуары для компьютера";
+                    typeProduct = TypeProduct.Accessory;
+                    break;
+                default:
+                    return RedirectToAction("Index", "Home");
+            }
+
+            var response = await _productService.GetSpecificProduct(typeProduct);
+            return View(response.Data);
+        }
     }
 }

@@ -62,12 +62,12 @@ namespace TechBaraholka.Service.Implementations
         {
             try
             {
-                var users = await _productRepository.GetAll().OrderByDescending(u => u.DateAdded).ToListAsync();
+                var products = await _productRepository.GetAll().OrderByDescending(u => u.DateAdded).ToListAsync();
 
                 return new BaseResponse<List<Product>>()
                 {
-                    Data = users,
-                    Description = "Получены все продукты из БД.",
+                    Data = products,
+                    Description = "Получены все товары из БД.",
                     StatusCode = StatusCode.OK
                 };
             }
@@ -79,6 +79,32 @@ namespace TechBaraholka.Service.Implementations
                     StatusCode = StatusCode.InternalServerError
                 };
             }
+        }
+
+        public async Task<BaseResponse<List<Product>>> GetSpecificProduct(TypeProduct productType)
+        {
+            try
+            {
+                var products = await _productRepository.GetAll().Where(p => p.TypeProduct == productType)
+                    .OrderByDescending(u => u.DateAdded).ToListAsync();
+
+                return new BaseResponse<List<Product>>()
+                {
+                    Data = products,
+                    Description = $"Получены товары типа {productType} из БД.",
+                    StatusCode = StatusCode.OK
+                };
+            }
+            catch (Exception ex)
+            {
+                return new BaseResponse<List<Product>>()
+                {
+                    Description = ex.Message,
+                    StatusCode = StatusCode.InternalServerError
+                };
+            }
+
+
         }
     }
 }

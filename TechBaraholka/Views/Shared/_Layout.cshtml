@@ -11,7 +11,7 @@
     <header class="border-bottom">
         <nav class="navbar navbar-expand-xl navbar-light bg-light">
             <div class="container-fluid">
-                <a class="navbar-brand text-dark" href="#">TechBaraholka</a>
+                <a class="navbar-brand text-dark" asp-action="Index" asp-controller="Home" asp-area="">TechBaraholka</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarWithDropdown" aria-controls="navbarWithDropdown" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -22,11 +22,11 @@
                                 Каталог
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                <li><a class="dropdown-item" href="#">Телевизоры</a></li>
-                                <li><a class="dropdown-item" href="#">Смартфоны</a></li>
-                                <li><a class="dropdown-item" href="#">Ноутбуки</a></li>
-                                <li><a class="dropdown-item" href="#">Товары для дома</a></li>
-                                <li><a class="dropdown-item" href="#">Аксессуары для компьютера</a></li>
+                                <li><a class="dropdown-item" asp-action="Menu" asp-controller="Product" asp-route-id="0">Телевизоры</a></li>
+                                <li><a class="dropdown-item" asp-action="Menu" asp-controller="Product" asp-route-id="1">Смартфоны</a></li>
+                                <li><a class="dropdown-item" asp-action="Menu" asp-controller="Product" asp-route-id="2">Ноутбуки</a></li>
+                                <li><a class="dropdown-item" asp-action="Menu" asp-controller="Product" asp-route-id="3">Товары для дома</a></li>
+                                <li><a class="dropdown-item" asp-action="Menu" asp-controller="Product" asp-route-id="4">Аксессуары для компьютера</a></li>
                             </ul>
                         </li>
                         @if (User.Identity.IsAuthenticated)
