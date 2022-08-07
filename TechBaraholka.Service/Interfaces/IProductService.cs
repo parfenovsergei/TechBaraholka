@@ -14,6 +14,7 @@ namespace TechBaraholka.Service.Interfaces
     {
         Task<BaseResponse<Product>> AddProduct(ProductViewModel model, string path, string userName);
         Task<BaseResponse<List<Product>>> GetAll();
+        Task<BaseResponse<List<Product>>> GetAll(string email);
 
         Task<BaseResponse<List<Product>>> GetSpecificTypeProduct(TypeProduct productType);
         Task<BaseResponse<Product>> GetSpecificProduct(int productId);

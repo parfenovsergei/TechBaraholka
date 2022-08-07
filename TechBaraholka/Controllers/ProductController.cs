@@ -93,5 +93,13 @@ namespace TechBaraholka.Controllers
             var response = await _productService.GetSpecificProduct(id);
             return View(response.Data);
         }
+
+        [HttpGet]
+        [Authorize]
+        public async Task<IActionResult> MyProducts()
+        {
+            var response = await _productService.GetAll(User.Identity.Name);
+            return View(response.Data);
+        }
     }
 }
