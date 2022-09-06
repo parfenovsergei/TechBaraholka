@@ -18,6 +18,7 @@ namespace TechBaraholka.Service.Implementations
     public class AccountService : IAccountService
     {
         private readonly IBaseRepository<User> _userRepository;
+        private readonly IBaseRepository<Cart> _cartRepository;
 
         public AccountService(IBaseRepository<User> userRepository)
         {
@@ -68,8 +69,8 @@ namespace TechBaraholka.Service.Implementations
                     Role = "User",
                     AvatarPath = path,
                     Password = HashPasswordHelper.HashPassowrd(model.Password),
+                    
                 };
-
                 await _userRepository.Create(newUser);
 
                 return new BaseResponse<ClaimsIdentity>()
@@ -97,6 +98,26 @@ namespace TechBaraholka.Service.Implementations
             };
             return new ClaimsIdentity(claims, "ApplicationCookie",
                 ClaimsIdentity.DefaultNameClaimType, ClaimsIdentity.DefaultRoleClaimType);
+        }
+
+        public async Task<bool> AddNewCart(string email)
+        {
+            try
+            {
+                var user = await _userRepository.GetAll().FirstOrDefaultAsync(u => u.Email == email);
+                user.Cart = new Cart()
+                {
+                    User = user,
+                    Sum = 0
+                };
+                await _userRepository.Update(user);
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
         }
     }
 }

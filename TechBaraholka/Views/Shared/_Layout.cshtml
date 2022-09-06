@@ -22,11 +22,11 @@
                                 Каталог
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                <li><a class="dropdown-item" asp-action="Menu" asp-controller="Product" asp-route-id="0">Телевизоры</a></li>
-                                <li><a class="dropdown-item" asp-action="Menu" asp-controller="Product" asp-route-id="1">Смартфоны</a></li>
-                                <li><a class="dropdown-item" asp-action="Menu" asp-controller="Product" asp-route-id="2">Ноутбуки</a></li>
-                                <li><a class="dropdown-item" asp-action="Menu" asp-controller="Product" asp-route-id="3">Товары для дома</a></li>
-                                <li><a class="dropdown-item" asp-action="Menu" asp-controller="Product" asp-route-id="4">Аксессуары для компьютера</a></li>
+                                <li><a class="dropdown-item" asp-action="Menu" asp-controller="Product" asp-route-id="0" asp-route-page="1">Телевизоры</a></li>
+                                <li><a class="dropdown-item" asp-action="Menu" asp-controller="Product" asp-route-id="1" asp-route-page="1">Смартфоны</a></li>
+                                <li><a class="dropdown-item" asp-action="Menu" asp-controller="Product" asp-route-id="2" asp-route-page="1">Ноутбуки</a></li>
+                                <li><a class="dropdown-item" asp-action="Menu" asp-controller="Product" asp-route-id="3" asp-route-page="1">Товары для дома</a></li>
+                                <li><a class="dropdown-item" asp-action="Menu" asp-controller="Product" asp-route-id="4" asp-route-page="1">Аксессуары для компьютера</a></li>
                             </ul>
                         </li>
                         @if (User.Identity.IsAuthenticated)

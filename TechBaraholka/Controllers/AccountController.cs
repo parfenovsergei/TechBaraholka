@@ -43,11 +43,13 @@ namespace TechBaraholka.Controllers
                         await uploadedFile.CopyToAsync(fileStream);
                     }
                     var response = await _accountService.Register(model, path);
+                    await _accountService.AddNewCart(model.Email);
                 }
                 else
                 {
                     string path = "/AvatarPics/DefaultAvatar.jpg";
                     var response = await _accountService.Register(model, path);
+                    await _accountService.AddNewCart(model.Email);
                 }
 
                 return RedirectToAction("Login", "Account");

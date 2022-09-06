@@ -15,5 +15,6 @@ namespace TechBaraholka.Service.Interfaces
         Task<BaseResponse<ClaimsIdentity>> Register(RegisterViewModel model, string path);
 
         Task<BaseResponse<ClaimsIdentity>> Login(LoginViewModel model);
+        Task<bool> AddNewCart(string email);
     }
 }

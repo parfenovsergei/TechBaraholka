@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
@@ -9,6 +10,7 @@ using TechBaraholka.Domain.Entity;
 using TechBaraholka.Domain.Enum;
 using TechBaraholka.Domain.ViewModels.Product;
 using TechBaraholka.Service.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
 namespace TechBaraholka.Controllers
 {
@@ -17,6 +19,7 @@ namespace TechBaraholka.Controllers
 
         IWebHostEnvironment _appEnvironment;
         IProductService _productService;
+        int pageSize = 3;
         public ProductController(IWebHostEnvironment appEnvironment, IProductService productService)
         {
             _appEnvironment = appEnvironment;
@@ -54,29 +57,34 @@ namespace TechBaraholka.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Menu(int id)
+        public async Task<IActionResult> Menu(int id, int page)
         {
             TypeProduct typeProduct;
             switch (id)
             {
                 case 0:
                     ViewBag.TypeProduct = "Телевизоры";
+                    ViewBag.TypeId = 0;
                     typeProduct = TypeProduct.TV;
                     break;
                 case 1:
                     ViewBag.TypeProduct = "Смартфоны";
+                    ViewBag.TypeId = 1;
                     typeProduct = TypeProduct.SmartPhone;
                     break;
                 case 2:
                     ViewBag.TypeProduct = "Ноутбуки";
+                    ViewBag.TypeId = 2;
                     typeProduct = TypeProduct.Laptop;
                     break;
                 case 3:
                     ViewBag.TypeProduct = "Товары для дома";
+                    ViewBag.TypeId = 3;
                     typeProduct = TypeProduct.HomeAppliances;
                     break;
                 case 4:
                     ViewBag.TypeProduct = "Акссесуары для компьютера";
+                    ViewBag.TypeId = 4;
                     typeProduct = TypeProduct.Accessory;
                     break;
                 default:
@@ -84,7 +92,16 @@ namespace TechBaraholka.Controllers
             }
 
             var response = await _productService.GetSpecificTypeProduct(typeProduct);
-            return View(response.Data);
+
+
+            return View(GetItemsPage(response.Data, page));
+        }
+
+        private List<Product> GetItemsPage(List<Product> products, int page)
+        {
+            var itemsToSkip = page * pageSize - pageSize;
+
+            return products.Skip(itemsToSkip).Take(pageSize).ToList();
         }
 
         [HttpGet]
