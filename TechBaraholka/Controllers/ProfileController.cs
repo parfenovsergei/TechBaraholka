@@ -21,5 +21,22 @@ namespace TechBaraholka.Controllers
             ViewBag.Path = "/AvatarPics/DefaultAvatar.jpg";
             return View(response.Data);
         }
+
+        [HttpGet]
+        [Authorize]
+        public async Task<IActionResult> Refill()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [Authorize]
+        public async Task<IActionResult> Refill(int balance)
+        {
+            var response = await _profileService.GetProfile(User.Identity.Name);
+            var response2 = await _profileService.Refill(response.Data, balance);
+
+            return RedirectToAction("MyProfile", "Profile");
+        }
     }
 }

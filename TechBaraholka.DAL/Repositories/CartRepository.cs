@@ -31,9 +31,12 @@ namespace TechBaraholka.DAL.Repositories
             return _db.Carts;
         }
 
-        public Task<Cart> Update(Cart entity)
+        public async Task<Cart> Update(Cart entity)
         {
-            throw new NotImplementedException();
+            _db.Carts.Update(entity);
+            await _db.SaveChangesAsync();
+
+            return entity;
         }
     }
 }

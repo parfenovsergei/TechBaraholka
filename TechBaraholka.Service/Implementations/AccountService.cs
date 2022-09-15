@@ -69,7 +69,7 @@ namespace TechBaraholka.Service.Implementations
                     Role = "User",
                     AvatarPath = path,
                     Password = HashPasswordHelper.HashPassowrd(model.Password),
-                    
+                    Balance = 0
                 };
                 await _userRepository.Create(newUser);
 

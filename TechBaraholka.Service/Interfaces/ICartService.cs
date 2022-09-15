@@ -11,5 +11,7 @@ namespace TechBaraholka.Service.Interfaces
     public interface ICartService
     {
         Task<BaseResponse<bool>> AddToCart(Product product, string email);
+        Task<BaseResponse<bool>> DeleteProduct(int productId, string userEmail);
+        Task<BaseResponse<bool>> BuyProduct(int productId, string email);
     }
 }

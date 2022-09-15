@@ -1,0 +1,63 @@
+﻿@model List<TechBaraholka.Domain.Entity.Product>
+@{
+    ViewData["Title"] = "Cart";
+}
+
+<div class="container py-3">
+    <h4>Всего товаров (@Model.Count)</h4>
+    @foreach(var product in Model){
+    <div class="row justify-content-center mb-3">
+        <div class="col-md-12">
+            <div class="card shadow-0 border rounded-3">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-12 col-lg-3 col-xl-3 mb-4 mb-lg-0">
+                            <img src="@Url.Content(product.PicturePath)" style="height: 15rem; width: 100%; object-fit: contain;" class="img-thumbnail img-fluid">
+                        </div>
+                        <div class="col-md-6 col-lg-6 col-xl-6">
+                            <h5>@product.Name</h5>
+                            <div class="text-truncate mb-4 mb-md-0">@product.Description</div>
+                            <small class="text-muted">Последнее обновление @product.DateAdded</small>
+                        </div>
+                        <div class="col-md-6 col-lg-3 col-xl-3 border-sm-start-none border-start">
+                            <div class="d-flex flex-row align-items-center mb-1">
+                                <h4>$@product.Price</h4>
+                            </div>
+                            <div class="d-flex flex-column">
+                                <button type="button" class="btn btn-warning btn-outline-dark" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                                  Купить
+                                </button>
+                                <a class="btn btn-warning  btn-outline-dark btn-sm mt-2" asp-action="DeleteProduct" asp-controller="Cart" asp-route-id="@product.Id">Удалить</a>
+                                <!-- Модальное окно -->
+                                <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                  <div class="modal-dialog">
+                                    <div class="modal-content">
+                                      <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Подтверждение покупки</h5>
+                                      </div>
+                                      <div class="modal-body">
+                                        <p>Вы действительно хотите приобрести данный товар стоимостью $@product.Price?</p>
+                                      </div>
+                                      <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary btn-outline-dark" data-bs-dismiss="modal">Отмена</button>
+                                        <a class="btn btn-warning btn-outline-dark" asp-action="BuyProduct" asp-controller="Cart" asp-route-id="@product.Id">Купить</a>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+        ViewBag.Sum += product.Price;
+    }
+    <div class="d-flex justify-content-start align-items-center">
+        <a class="btn btn-warning btn-outline-dark me-3">Купить все</a>
+        <h5 class="mt-2">Итого: $@ViewBag.Sum</h5>
+    </div>
+</div>
+
+

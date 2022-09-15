@@ -42,5 +42,30 @@ namespace TechBaraholka.Service.Implementations
                 };
             }
         }
+
+        public async Task<BaseResponse<bool>> Refill(User user, int sum)
+        {
+            try
+            {
+                user.Balance += sum;
+                await _userRepository.Update(user);
+
+                return new BaseResponse<bool>()
+                {
+                    Data = true,
+                    Description = "Счёт пополнен",
+                    StatusCode = StatusCode.InternalServerError
+                };
+            }
+            catch (Exception ex)
+            {
+                return new BaseResponse<bool>()
+                {
+                    Data = false,
+                    Description = ex.Message,
+                    StatusCode = StatusCode.InternalServerError
+                };
+            }
+        }
     }
 }

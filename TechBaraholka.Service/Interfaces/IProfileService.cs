@@ -11,5 +11,6 @@ namespace TechBaraholka.Service.Interfaces
     public interface IProfileService
     {
         Task<BaseResponse<User>> GetProfile(string email);
+        Task<BaseResponse<bool>> Refill(User user, int sum);
     }
 }

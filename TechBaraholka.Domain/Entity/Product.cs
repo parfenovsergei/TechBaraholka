@@ -13,7 +13,7 @@ namespace TechBaraholka.Domain.Entity
         //public int UserId { get; set; }
         public virtual User User { get; set; }
         //public int CartId { get; set; }
-        public virtual Cart Cart { get; set; }
+        public virtual Cart? Cart { get; set; }
        /* public int OrderId { get; set; }
         public virtual Order? Order { get; set; }*/
         public DateTime DateAdded { get; set; }

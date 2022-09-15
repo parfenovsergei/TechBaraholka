@@ -14,6 +14,7 @@ namespace TechBaraholka.Domain.Entity
         public string Address { get; set; }
         public string Role { get; set; }
         public string AvatarPath { get; set; }
+        public int Balance { get; set; }
         public virtual Cart Cart { get; set; }
         public virtual List<Product> Products { get; set; } = new List<Product>();
         //public virtual List<Order> Oreders { get; set; } = new List<Order>();

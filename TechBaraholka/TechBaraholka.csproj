@@ -21,7 +21,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Views\Cart\" />
     <Folder Include="wwwroot\AvatarPics\" />
     <Folder Include="wwwroot\ProductPics\" />
   </ItemGroup>

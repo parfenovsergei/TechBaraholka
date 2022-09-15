@@ -15,7 +15,14 @@
                 <p class="fs-5 border-bottom pb-2">@Model.Description</p>
                 <div class="d-flex justify-content-between align-items-center border-bottom pb-3">
                     <h4>$@Model.Price</h4>
-                    <a class="btn btn-warning btn-outline-dark">Добавить в корзину</a>
+                    @if (User.Identity.Name != Model.User.Email)
+                    {
+                        <a class="btn btn-warning btn-outline-dark" asp-action="AddToCart" asp-controller="Cart" asp-route-id="@Model.Id">Добавить в корзину</a>
+                    }
+                    else
+                    {
+                        <p>Ваш товар</p>
+                    }
                 </div>
                 <p class="text-muted">Дата последнего обновления товара @Model.DateAdded</p>
             </div>

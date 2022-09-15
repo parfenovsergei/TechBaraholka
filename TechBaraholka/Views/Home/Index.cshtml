@@ -12,8 +12,7 @@
         <div class="row g-3">
             @foreach(var product in Model)
             {
-                if(product.Cart == null)
-                {
+                if(product.Cart == null){
                 <div class="col col-sm-12 col-md-6 col-lg-4">
                     <div class="card shadow-sm" style="height: 34rem;">
                         <img src="@Url.Content(product.PicturePath)" style="height: 18rem; width=100%; object-fit: contain;" class="card-img-top img-thumbnail img-fluid" alt="card-img-top">
@@ -27,11 +26,15 @@
                             <p class="card-text">@product.Description</p>
                         </div>
                         <div class="d-flex justify-content-between align-items-center p-3">
-                                @if (User.Identity.IsAuthenticated)
-                                {
-                                    <a class="btn btn-sm btn-warning btn-outline-dark" asp-action="AddToCart" asp-controller="Cart" asp-route-id="@product.Id">Добавить в корзину</a>
-                                }
-                                <p class="mt-2"><small class="text-muted">Последнее обновление @product.DateAdded.Date.ToString("dd:MM:yyyy")</small></p>
+                            @if (User.Identity.IsAuthenticated && User.Identity.Name != product.User.Email)
+                            {
+                                <a class="btn btn-sm btn-warning btn-outline-dark" asp-action="AddToCart" asp-controller="Cart" asp-route-id="@product.Id">Добавить в корзину</a>
+                            }
+                            else if(User.Identity.IsAuthenticated)
+                            {
+                                <p class="mt-2">Ваш товар</p>
+                            }
+                            <p class="mt-2"><small class="text-muted">Последнее обновление @product.DateAdded.Date.ToString("dd:MM:yyyy")</small></p>
                         </div>
                     </div>
                 </div>

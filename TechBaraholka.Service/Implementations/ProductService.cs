@@ -149,8 +149,29 @@ namespace TechBaraholka.Service.Implementations
                     StatusCode = StatusCode.InternalServerError
                 };
             }
+        }
 
+        public async Task<BaseResponse<List<Product>>> GetMyCartProducts(int cartId)
+        {
+            try
+            {
+                var products = await _productRepository.GetAll().Where(p => p.Cart.Id == cartId).OrderByDescending(u => u.DateAdded).ToListAsync();
 
+                return new BaseResponse<List<Product>>()
+                {
+                    Data = products,
+                    Description = "Получены все товары в корзине из БД.",
+                    StatusCode = StatusCode.OK
+                };
+            }
+            catch (Exception ex)
+            {
+                return new BaseResponse<List<Product>>()
+                {
+                    Description = ex.Message,
+                    StatusCode = StatusCode.InternalServerError
+                };
+            }
         }
     }
 }
