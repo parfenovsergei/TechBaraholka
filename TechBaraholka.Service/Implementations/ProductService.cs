@@ -173,5 +173,30 @@ namespace TechBaraholka.Service.Implementations
                 };
             }
         }
+
+        public async Task<BaseResponse<bool>> DeleteProduct(int id, string name)
+        {
+            try
+            {
+                var product = await _productRepository.GetAll().FirstOrDefaultAsync(p => p.Id == id);
+                await _productRepository.Delete(product);
+
+                return new BaseResponse<bool>()
+                {
+                    Data = true,
+                    Description = $"Товар удален.",
+                    StatusCode = StatusCode.OK
+                };
+            }
+            catch (Exception ex)
+            {
+                return new BaseResponse<bool>()
+                {
+                    Data = false,
+                    Description = ex.Message,
+                    StatusCode = StatusCode.InternalServerError
+                };
+            }
+        }
     }
 }

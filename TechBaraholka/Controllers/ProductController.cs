@@ -118,5 +118,13 @@ namespace TechBaraholka.Controllers
             var response = await _productService.GetAll(User.Identity.Name);
             return View(response.Data);
         }
+        [HttpGet]
+        [Authorize]
+        public async Task<IActionResult> DeleteMyProduct(int id)
+        {
+            var response = await _productService.DeleteProduct(id, User.Identity.Name);
+
+            return RedirectToAction("MyProducts", "Product");
+        }
     }
 }

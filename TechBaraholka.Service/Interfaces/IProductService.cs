@@ -19,5 +19,6 @@ namespace TechBaraholka.Service.Interfaces
         Task<BaseResponse<List<Product>>> GetSpecificTypeProduct(TypeProduct productType);
         Task<BaseResponse<Product>> GetSpecificProduct(int productId);
         Task<BaseResponse<List<Product>>> GetMyCartProducts(int cartId);
+        Task<BaseResponse<bool>> DeleteProduct(int id, string name);
     }
 }
