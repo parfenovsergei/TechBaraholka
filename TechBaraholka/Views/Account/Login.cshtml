@@ -1,0 +1,39 @@
+﻿@model TechBaraholka.Domain.ViewModels.Account.LoginViewModel
+@{
+    ViewData["Title"] = "Login Page";
+}
+
+<div class="d-flex justify-content-center align-items-center mt-3 mb-3"><h1>Вход</h1></div>
+<div class="container d-flex justify-content-center align-items-center">
+    <form asp-action="Login" asp-controller="Account"  method="post" enctype="multipart/form-data">
+        <div class="validation" asp-validation-summary="ModelOnly"></div>
+        <div class="row mb-3">
+            <label asp-for="Email" class="col-3 col-form-label">Email</label>
+            <div class="col-9">
+                <input type="email" class="form-control" asp-for="Email">
+            </div>
+            <span asp-validation-for="Email"></span>
+        </div>
+        <div class="row mb-3">
+            <label asp-for="Password" class="col-3 col-form-label">Пароль</label>
+            <div class="col-9">
+                <input type="password" class="form-control" asp-for="Password">
+            </div>
+            <span asp-validation-for="Password"></span>
+        </div>
+                           
+        <div class="d-flex justify-content-center align-items-center mb-2">
+            <button type="submit" class="btn btn-primary">Войти</button>
+        </div>
+        <div class="d-flex justify-content-center align-items-center mb-3">
+            <p>Еще нет аккаунта? <a asp-action="Register" asp-controller="Account">Регистрация</a></p>
+        </div>
+    </form>
+</div>
+                                    
+
+
+@section Scripts{
+<script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}

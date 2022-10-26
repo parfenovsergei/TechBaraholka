@@ -1,0 +1,73 @@
+﻿@model TechBaraholka.Domain.ViewModels.Account.RegisterViewModel
+@{
+    ViewData["Title"] = "Registration";
+}   
+
+<div class="d-flex justify-content-center align-items-center mb-3"><h1>Регистрация</h1></div>
+<div class="container d-flex justify-content-center align-items-center">
+    <form asp-action="Register" asp-controller="Account"  method="post" enctype="multipart/form-data">
+        <div class="validation" asp-validation-summary="ModelOnly"></div>
+        <div class="row mb-3">
+            <label asp-for="Name" class="col-3 col-form-label">Имя</label>
+            <div class="col-9">
+                <input type="text" class="form-control" asp-for="Name">
+                <span asp-validation-for="Name"></span>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label asp-for="Surname" class="col-3 col-form-label">Фамилия</label>
+            <div class="col-9">
+                <input type="text" class="form-control" asp-for="Surname">
+                <span asp-validation-for="Surname"></span>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label asp-for="Email" class="col-3 col-form-label">Email</label>
+            <div class="col-9">
+                <input type="email" class="form-control" id="inputEmail" asp-for="Email">
+                <span asp-validation-for="Email"></span>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label asp-for="Address" class="col-3 col-form-label">Адрес</label>
+            <div class="col-9">
+                <input type="text" class="form-control" id="inputEmail" asp-for="Address">
+                <span asp-validation-for="Address"></span>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label asp-for="Password" class="col-3 col-form-label">Пароль</label>
+            <div class="col-9">
+                <input type="password" class="form-control" id="inputPassword" asp-for="Password">
+                <span asp-validation-for="Password"></span>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label asp-for="PasswordConfirm" class="col-3 col-form-label">Повторите пароль</label>
+            <div class="col-9">
+                <input type="password" class="form-control" id="inputPassword" asp-for="PasswordConfirm">
+                <span asp-validation-for="PasswordConfirm"></span>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label class="col-3 col-form-label">Загрузите фото</label>
+            <div class="col-9">
+                <input type="file" class="form-control" name="uploadedFile">
+            </div>
+        </div>
+        
+        <div class="d-flex justify-content-center align-items-center mb-2">
+            <button type="submit" class="btn btn-primary">Зарегистрироваться</button>
+        </div>
+        <div class="d-flex justify-content-center align-items-center mb-3">
+            <p>Уже есть аккаунт? <a asp-action="Login" asp-controller="Account">Войти</a></p>
+        </div>
+    </form>
+</div>
+                                    
+
+
+@section Scripts{
+<script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}

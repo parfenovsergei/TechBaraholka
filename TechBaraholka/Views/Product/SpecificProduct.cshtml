@@ -1,0 +1,32 @@
+﻿@model TechBaraholka.Domain.Entity.Product
+@{
+    ViewData["Title"] = Model.Name;
+}
+
+<div class="container py-5">
+    <div class="row">
+        <div class="col-lg-6">
+            <p><img src="@Url.Content(Model.PicturePath)" width="600" class="img-thumbnail img-fluid" alt="Ошибка загрузки фото"></p>
+        </div>
+        <div class="col-lg-6">
+            <div>
+                <h5><a asp-action="Menu" asp-controller="Product" asp-route-id="@Convert.ChangeType(Model.TypeProduct, Model.TypeProduct.GetTypeCode())">@Model.TypeProduct</a></h5>
+                <h3 class="border-bottom pb-2">@Model.Name</h3>
+                <p class="fs-5 border-bottom pb-2">@Model.Description</p>
+                <div class="d-flex justify-content-between align-items-center border-bottom pb-3">
+                    <h4>$@Model.Price</h4>
+                    @if (User.Identity.Name != Model.User.Email)
+                    {
+                        <a class="btn btn-warning btn-outline-dark" asp-action="AddToCart" asp-controller="Cart" asp-route-id="@Model.Id">Добавить в корзину</a>
+                    }
+                    else
+                    {
+                        <p>Ваш товар</p>
+                    }
+                </div>
+                <p class="text-muted">Дата последнего обновления товара @Model.DateAdded</p>
+            </div>
+        </div>
+    </div>
+</div>
+

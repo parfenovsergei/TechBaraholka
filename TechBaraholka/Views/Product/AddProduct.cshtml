@@ -1,0 +1,66 @@
+﻿@model TechBaraholka.Domain.ViewModels.Product.ProductViewModel
+@{
+     ViewData["Title"] = "Add new product";
+}
+
+<div class="d-flex justify-content-center align-items-center mb-3"><h1>Добавление нового товара</h1></div>
+<div class="container d-flex justify-content-center align-items-center">
+    <form asp-action="AddProduct" asp-controller="Product"  method="post" enctype="multipart/form-data">
+        <div class="validation" asp-validation-summary="ModelOnly"></div>
+        <div class="row mb-3">
+            <label asp-for="Name" class="col-3 col-form-label">Название товара</label>
+            <div class="col-9">
+                <input type="text" class="form-control" asp-for="Name">
+                <span asp-validation-for="Name"></span>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label asp-for="Description" class="col-3 col-form-label">Описание товара</label>
+            <div class="col-9">
+                <textarea class="form-control" asp-for="Description" rows="4"></textarea>
+                <span asp-validation-for="Description"></span>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label asp-for="Price" class="col-3 col-form-label">Цена</label>
+            <div class="input-group mb-3">
+                <span class="input-group-text">$</span>
+                <input asp-for="Price" type="number" class="form-control">
+                <span class="input-group-text">.00</span>
+                <span asp-validation-for="Price"></span>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label asp-for="TypeProduct" class="col-3 col-form-label">Тип товара</label>
+            <div class="col-9">
+                <select class="form-select" asp-for="TypeProduct">
+                    <option selected="" disabled="" value="">Выберите...</option>
+                    <option value="@ViewBag.TV">Телевизор</option>
+                    <option value="@ViewBag.SmartPhone">Смартфон</option>
+                    <option value="@ViewBag.Laptop">Ноутбук</option>
+                    <option value="@ViewBag.Accessory">Аксессуар для компьютера</option>
+                    <option value="@ViewBag.HomeAppliances">Товар для дома</option>
+                </select>
+                <span asp-validation-for="TypeProduct"></span>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label class="col-3 col-form-label">Загрузите фото товара</label>
+            <div class="col-9">
+                <input type="file" class="form-control" name="uploadedFile" required>
+                <span class="invalid-feedback">Загрузите фото товара</span>
+            </div>
+        </div>
+        
+        <div class="d-flex justify-content-center align-items-center mb-2">
+            <button type="submit" class="btn btn-warning btn-outline-dark">Добавить товар</button>
+        </div>
+    </form>
+</div>
+                                    
+
+
+@section Scripts{
+<script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}
